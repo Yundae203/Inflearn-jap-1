@@ -39,9 +39,9 @@ class MemberServiceTest {
         Member member2 = new Member();
         member2.setName("kim");
 
-        // when
+        // EXCEPTION
         memberService.join(member1);
-        Assertions.assertThrows(IllegalStateException.class,
+        assertThrows(IllegalStateException.class,
                 () -> memberService.join(member2)); // EXCEPTION
     }
 }
