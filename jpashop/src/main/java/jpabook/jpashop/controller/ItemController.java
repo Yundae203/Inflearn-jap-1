@@ -1,5 +1,6 @@
 package jpabook.jpashop.controller;
 
+import jpabook.jpashop.controller.item.UpdateBookDTO;
 import jpabook.jpashop.domain.Item;
 import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.service.ItemService;
@@ -65,15 +66,9 @@ public class ItemController {
     @PostMapping("items/{itemId}/edit")
     public String updateForm(@PathVariable("itemId") String itemId, @ModelAttribute("form") BookForm form) {
 
-        Book book = new Book();
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
+        UpdateBookDTO dto = UpdateBookDTO.fromBookForm(form);
+        itemService.updateItem(dto);
 
-        itemService.saveItem(book);
         return "redirect:/items";
     }
 }

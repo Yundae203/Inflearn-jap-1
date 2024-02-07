@@ -21,9 +21,9 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
-//    public List<Order> findAll(OrderSearch orderSearch) {
-//        em.createQuery("select 0 from Order o join o.member m",
-//                Order.class);
-//    }
+    public List<Order> findAll(OrderSearch orderSearch) {
+        return em.createQuery("select 0 from Order o join o.member m", Order.class)
+                .getResultList();
+    }
 
 }

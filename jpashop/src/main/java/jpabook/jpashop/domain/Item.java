@@ -46,4 +46,7 @@ public abstract class Item {
         this.stockQuantity = restQuantity;
     }
 
+    public void updateItem() {
+
+    }
 }
